@@ -45,6 +45,7 @@ export class FormEmpleadoComponent{
   ngOnInit() { 
     const params = this.activatedRoute.snapshot.params;
     const edit = this.router.url.includes('/editar/');
+    console.log('ABC Empleado');
     if(edit){
       this.encabezado = 'Editar información del empleado';
       this.boton = 'Guardar cambios';
