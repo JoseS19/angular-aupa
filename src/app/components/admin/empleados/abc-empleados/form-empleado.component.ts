@@ -83,6 +83,7 @@ export class FormEmpleadoComponent{
   }
 
   updateEmpleado(){
+    console.log('PUT EMPLEADO');
     if(this.divPass != false){
       if(this.pass2 != this.empleado.password){
         this.pass_valid = false;
