@@ -45,7 +45,6 @@ export class FormEmpleadoComponent{
   ngOnInit() { 
     const params = this.activatedRoute.snapshot.params;
     const edit = this.router.url.includes('/editar/');
-    console.log('ABC Empleado');
     if(edit){
       this.encabezado = 'Editar información del empleado';
       this.boton = 'Guardar cambios';
@@ -84,7 +83,6 @@ export class FormEmpleadoComponent{
   }
 
   updateEmpleado(){
-    console.log('PUT EMPLEADO');
     if(this.divPass != false){
       if(this.pass2 != this.empleado.password){
         this.pass_valid = false;
@@ -102,7 +100,6 @@ export class FormEmpleadoComponent{
         )
       }
     }else{
-      console.log('PUT NO PASS');
       this.empleadoService.updateDatosNopass(this.empleado)
       .subscribe(
         res=>{
@@ -110,7 +107,6 @@ export class FormEmpleadoComponent{
           this.router.navigate(['menu']);
         },
         err=>{
-          console.log(err);
           this.toastr.error('No se han podido actualizar los datos del empleado');
         }
       )
