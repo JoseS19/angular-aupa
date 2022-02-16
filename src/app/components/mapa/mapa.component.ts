@@ -20,12 +20,17 @@ export class MapaComponent{
     }
 
     superficies: Superficie[] =  [];
+    poligonos: Superficie[] =  [];
     superficiesRiego: Superficie[] =  [];
     lat: number;
     lng: number;
     zoom: number;
     mapTypeId: string;
     ngOnInit() {
+        this.inicio();
+    }
+
+    inicio(){
         let isAdmin = localStorage.getItem('admin');
         if(isAdmin == '1'){
             this.getSuperficies();
@@ -82,11 +87,12 @@ export class MapaComponent{
 
     unir(){
         for(let i=0; i<this.superficies.length; i++){
+            this.poligonos[i] = this.superficies[i];
             for(let x=0; x<this.superficiesRiego.length; x++){
-                if(this.superficies[i].id_superficie == this.superficiesRiego[x].id_superficie){
-                    this.superficies[i].total = this.superficiesRiego[x].total;
-                    this.superficies[i].restante = this.superficiesRiego[x].restante;
-                    this.superficies[i].id_riego = this.superficiesRiego[x].id_riego;
+                if(this.poligonos[i].id_superficie == this.superficiesRiego[x].id_superficie){
+                    this.poligonos[i].total = this.superficiesRiego[x].total;
+                    this.poligonos[i].restante = this.superficiesRiego[x].restante;
+                    this.poligonos[i].id_riego = this.superficiesRiego[x].id_riego;
                 }
             }
         }

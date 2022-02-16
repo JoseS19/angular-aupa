@@ -8,7 +8,7 @@ import { Empleado } from '../models/empleado';
 })
 export class EmpleadoService {
 
-  BASE_URL:string ='https://thawing-taiga-33568.herokuapp.com/api/auth';   //Api2
+  BASE_URL:string ='https://thawing-taiga-33568.herokuapp.com/api';   //Api2
   // BASE_URL:string ='http://127.0.0.1:8000/api';
   constructor(private httpClient:HttpClient, ) { }
   
@@ -36,8 +36,7 @@ export class EmpleadoService {
     return this.httpClient.get<Empleado>(`${this.BASE_URL}/user/${id}`); 
   }
   updateDatos(empleado: Empleado): Observable<Empleado>{
-    let id_empleado = localStorage.getItem('id');
-    return this.httpClient.put<Empleado>(`${this.BASE_URL}/user/${id_empleado}`, empleado);
+    return this.httpClient.put<Empleado>(`${this.BASE_URL}/user/${empleado.id}`, empleado);
   }
   updateDatosNopass(empleado: Empleado): Observable<Empleado>{
     return this.httpClient.put<Empleado>(`${this.BASE_URL}/user/nopass/${empleado.id}`, empleado);
