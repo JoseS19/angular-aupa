@@ -100,6 +100,7 @@ export class FormEmpleadoComponent{
         )
       }
     }else{
+      console.log('PUT NO PASS');
       this.empleadoService.updateDatosNopass(this.empleado)
       .subscribe(
         res=>{
@@ -107,6 +108,7 @@ export class FormEmpleadoComponent{
           this.router.navigate(['menu']);
         },
         err=>{
+          console.log(err);
           this.toastr.error('No se han podido actualizar los datos del empleado');
         }
       )
