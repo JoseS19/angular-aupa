@@ -40,7 +40,6 @@ export class EmpleadoService {
     return this.httpClient.put<Empleado>(`${this.BASE_URL}/user/${id_empleado}`, empleado);
   }
   updateDatosNopass(empleado: Empleado): Observable<Empleado>{
-    let id_empleado = localStorage.getItem('id');
     return this.httpClient.put<Empleado>(`${this.BASE_URL}/user/nopass/${id_empleado}`, empleado);
   }
 }
